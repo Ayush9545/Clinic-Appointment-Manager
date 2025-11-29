@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CAM</title>
+    <link rel="stylesheet" href="../CSS/login_page.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-left">
+            <a href="/" class="logo">🏥 CAM</a>
+            <nav class="nav-links">
+                <a href="/patients">Patients</a>
+                <a href="/doctors">Doctors</a>
+                <a href="/appointments">Appointments</a>
+            </nav>
+        </div>
+        <div class="auth-buttons">
+            <a href="/login_as" class="auth-button login active">Login</a>
+            <a href="/register" class="auth-button register">Register</a>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <header class="page-header">
+            <h1>Login to Your Account</h1>
+            <p>Please select your role to continue.</p>
+        </header>
+
+        <div class="login-options-grid">
+            <a href="/login_patient" class="login-option-card">
+                <div class="card-icon">👤</div>
+                <h3>Login as a Patient</h3>
+                <p>Access your medical records, book appointments, and manage your health profile.</p>
+                <span class="card-link">Proceed to Patient Login</span>
+            </a>
+
+            <a href="/login_doctor" class="login-option-card">
+                <div class="card-icon">🩺</div>
+                <h3>Login as a Doctor</h3>
+                <p>Manage your schedule, access patient records, and update consultation notes.</p>
+                <span class="card-link">Proceed to Doctor Login</span>
+            </a>
+        </div>
+
+        <div class="register-prompt">
+            <p>Don't have an account? <a href="/register">Register here</a></p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Clinic Appointment Manager. All Rights Reserved.</p>
+        <div class="contact-info">
+            <p>Contact Us: (+91) 1234554321 | info@CAM.com</p>
+        </div>
+    </footer>
+
+</body>
+</html>

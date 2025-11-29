@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Dr. <%= f_name %></title>
+    <link rel="stylesheet" href="/css/doctor_main_page.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-left">
+            <a href="/" class="logo">🏥 CAM</a>
+        </div>
+        <div class="auth-buttons">
+            <span class="welcome-message">Welcome, <strong>Dr. <%= f_name %></strong></span>
+            <a href="/logout" class="auth-button logout">Logout</a>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <header class="page-header">
+            <h1>Doctor's Dashboard</h1>
+            <p>Here are your scheduled appointments.</p>
+        </header>
+    
+        <div class="doctor-dashboard-content">
+            <h2>Today's Appointments</h2>
+            <div class="appointment-list">
+                
+                <% if (todaysAppointments && todaysAppointments.length > 0) { %>
+                    <% todaysAppointments.forEach(app => { %>
+                        
+                        <div class="appointment-item">
+                            <div class="appointment-item-time">
+                                <%= new Date(app.appointment_time).toLocaleString('en-IN', { timeStyle: 'short', hour12: false }) %>
+                            </div>
+                            <div class="appointment-item-patient">
+                                <div class="patient-avatar"></div>
+                                <div class="patient-details">
+                                    <h4><%= app.patient_name %></h4>
+                                </div>
+                            </div>
+                            <div class="appointment-item-actions">
+                                <a href="#" class="action-btn view-details">View Details</a>
+                            </div>
+                        </div>
+    
+                    <% }) %>
+                <% } else { %>
+                    <div class="no-appointments-doctor">
+                        <p>You have no appointments scheduled for today.</p>
+                    </div>
+                <% } %>
+    
+            </div>
+        </div>
+    
+        <div class="doctor-dashboard-content" style="margin-top: 30px;">
+            <h2>Upcoming Appointments</h2>
+            <div class="appointment-list">
+                
+                <% if (upcomingAppointments && upcomingAppointments.length > 0) { %>
+                    <% upcomingAppointments.forEach(app => { %>
+                        
+                        <div class="appointment-item">
+                            <div class="appointment-item-time" style="font-size: 16px; flex-basis: 200px;">
+                                <%= new Date(app.appointment_time).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short', hour12: false }) %>
+                            </div>
+                            <div class="appointment-item-patient">
+                                <div class="patient-avatar"></div>
+                                <div class="patient-details">
+                                    <h4><%= app.patient_name %></h4>
+                                </div>
+                            </div>
+                            <div class="appointment-item-actions">
+                                <a href="#" class="action-btn view-details">View Details</a>
+                            </div>
+                        </div>
+    
+                    <% }) %>
+                <% } else { %>
+                    <div class="no-appointments-doctor">
+                        <p>You have no other upcoming appointments.</p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Clinic Appointment Manager. All Rights Reserved.</p>
+        <div class="contact-info">
+            <p>Contact Us: (+91) 1234554321 | info@CAM.com</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+/* --- General Body & Font Styles --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding-top: 80px; /* Space for the fixed header */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1; /* Ensures the main content pushes the footer down */
+}
+
+/* --- Header Styles --- */
+.header {
+    background-color: #ffffff;
+    padding: 0 40px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+.header-left { display: flex; align-items: center; gap: 30px; }
+.logo { font-size: 24px; font-weight: bold; color: #333; text-decoration: none; }
+.auth-buttons { display: flex; gap: 15px; }
+.auth-button { text-decoration: none; padding: 8px 16px; border: 2px solid transparent; border-radius: 6px; font-weight: 600; transition: all 0.3s ease; }
+.auth-button.logout { border-color: #dc3545; color: #dc3545; }
+.auth-button.logout:hover { background-color: #dc3545; color: #ffffff; }
+
+/* --- General Page & Container Styles --- */
+.dashboard-container {
+    width: 90%;
+    max-width: 1600px; /* Wider max-width for 3 columns */
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.page-header { text-align: center; margin-bottom: 40px; }
+.page-header h1 { font-size: 36px; color: #1c1e21; margin-bottom: 10px; }
+.page-header p { font-size: 18px; color: #606770; margin: 0; }
+
+/* --- 3-Column Dashboard Layout --- */
+.dashboard-grid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three equal columns */
+    gap: 30px;
+    align-items: start;
+}
+
+.dashboard-panel {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    min-height: 350px;
+}
+
+.dashboard-panel h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #333;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+/* Part 1: Appointment Details Table */
+.appointment-details-table {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.table-row {
+    display: flex;
+    font-size: 16px;
+}
+.table-cell.label {
+    flex-basis: 120px; /* Fixed width for labels */
+    font-weight: 600;
+    color: #495057;
+}
+.table-cell.value {
+    flex-grow: 1;
+    color: #6c757d;
+}
+
+/* Part 2: Doctor Directory (Compact Version) */
+.doctor-directory-list-sm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.doctor-info-card-sm {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+}
+.doctor-avatar-sm { width: 50px; height: 50px; border-radius: 50%; background-color: #e9ecef; flex-shrink: 0; }
+.doctor-card-content h3 { margin: 0 0 4px 0; font-size: 16px; }
+.doctor-card-content p { margin: 0; font-size: 14px; color: #6c757d; }
+
+/* Part 3: Booking Form */
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.form-group label { display: block; font-size: 14px; color: #333; font-weight: 600; margin-bottom: 6px; }
+.form-group input { width: 100%; padding: 12px; border: 1px solid #dddfe2; border-radius: 6px; font-size: 16px; box-sizing: border-box; }
+.form-group input:focus { border-color: #007bff; outline: none; box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2); }
+
+/* Bottom Continue Button */
+.page-actions {
+    text-align: center;
+    margin-top: 40px;
+}
+.continue-btn {
+    display: inline-block;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff; /* Blue color */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.continue-btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* --- Footer Styles --- */
+.footer {
+    background-color: #343a40;
+    color: #f8f9fa;
+    text-align: center;
+    padding: 20px 40px;
+    margin-top: auto;
+}
+.footer p { margin: 5px 0; font-size: 14px; }
+.contact-info { margin-top: 10px; color: #adb5bd; }
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1200px) {
+    .dashboard-grid-3col {
+        grid-template-columns: 1fr; /* Stack the columns */
+    }
+}
+

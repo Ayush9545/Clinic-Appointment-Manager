@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration - CAM</title>
+    <link rel="stylesheet" href="../CSS/register_patient.css">
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Create a Patient Account</h2>
+        <form action="/register_patient" method="POST">
+            
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name" placeholder="Enter your first name" required>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name" placeholder="Enter your last name" required>
+            </div>
+            <div class="form-group">
+                <label for="Age">Age</label>
+                <input type="text" id="age" name="age" placeholder="Enter your age" required>
+            </div>
+            <div class="form-group">
+                <label for="contact_number">Contact Number</label>
+                <input type="tel" id="contact_number" name="contact_number" placeholder="Enter your 10-digit number" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="3" placeholder="Enter your full address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+
+        <div class="divider">OR</div>
+        <a href="/auth/google/register" class="social-login-btn google-btn">
+            <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google logo">
+            Register with Google
+        </a>
+        <p class="form-footer">Already have an account? <a href="/login">Login here</a></p>
+    </div>
+
+</body>
+</html>
