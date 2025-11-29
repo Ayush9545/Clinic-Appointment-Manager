@@ -20,14 +20,14 @@
         </div>
     </header>
 
-    <main class="dashboard-container">
+    <main class="dashboard">
         <header class="page-header">
             <!-- The heading is also personalized -->
             <h1>Patient Dashboard</h1>
             <p>Manage your appointments and view doctor information.</p>
         </header>
 
-        <div class="dashboard-grid-3col">
+        <div class="dashboard-grid">
             <div class="dashboard-panel">
                 <h2>Upcoming Appointments</h2>
             
@@ -35,7 +35,7 @@
                     
                     <% appointments.forEach(app => { %>
                         
-                        <div class="appointment-details-table" style="margin-bottom: 20px; border: 1px solid #eee; padding: 15px; border-radius: 8px;">
+                        <div class="appointment-card" style="margin-bottom: 20px; border: 1px solid #eee; padding: 15px; border-radius: 8px;">
                             <div class="table-row">
                                 <div class="table-cell label">With</div>
                                 <div class="table-cell value"><%= app.doctor_name %> (ID: <%= app.doctor_id %>)</div>

@@ -24,14 +24,14 @@
             <p>Here are your scheduled appointments.</p>
         </header>
     
-        <div class="doctor-dashboard-content">
+        <div class="dashboard-grid">
             <h2>Today's Appointments</h2>
             <div class="appointment-list">
                 
                 <% if (todaysAppointments && todaysAppointments.length > 0) { %>
                     <% todaysAppointments.forEach(app => { %>
                         
-                        <div class="appointment-item">
+                        <div class="appointment-card">
                             <div class="appointment-item-time">
                                 <%= new Date(app.appointment_time).toLocaleString('en-IN', { timeStyle: 'short', hour12: false }) %>
                             </div>
