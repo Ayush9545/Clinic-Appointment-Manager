@@ -3,112 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- The title now uses the patient's name passed from the server -->
     <title>Dashboard | <%= f_name %></title>
     <link rel="stylesheet" href="/CSS/patient_main_page.css">
 </head>
 <body>
-
+    <!-- Top fixed header -->
     <header class="header">
         <div class="header-left">
             <a href="/" class="logo">🏥 CAM</a>
         </div>
         <div class="auth-buttons">
-             <!-- Welcome message added for a personalized touch -->
             <span class="welcome-message">Welcome, <strong><%= f_name %></strong></span>
             <a href="/logout" class="auth-button logout">Logout</a>
         </div>
     </header>
 
-    <main class="dashboard">
+    <main class="dashboard-container">
+        <!-- Page heading -->
         <header class="page-header">
-            <!-- The heading is also personalized -->
             <h1>Patient Dashboard</h1>
             <p>Manage your appointments and view doctor information.</p>
         </header>
 
-        <div class="dashboard-grid">
-            <div class="dashboard-panel">
+        <!-- 3-column layout: Upcoming | Directory | Booking -->
+        <div class="dashboard-grid-3col">
+            <!-- Column 1: Upcoming Appointments -->
+            <section class="dashboard-panel">
                 <h2>Upcoming Appointments</h2>
-            
+
                 <% if (appointments && appointments.length > 0) { %>
-                    
                     <% appointments.forEach(app => { %>
-                        
-                        <div class="appointment-card" style="margin-bottom: 20px; border: 1px solid #eee; padding: 15px; border-radius: 8px;">
+                        <div class="appointment-details-table">
                             <div class="table-row">
                                 <div class="table-cell label">With</div>
-                                <div class="table-cell value"><%= app.doctor_name %> (ID: <%= app.doctor_id %>)</div>
+                                <div class="table-cell value">
+                                    <%= app.doctor_name %> (ID: <%= app.doctor_id %>)
+                                </div>
                             </div>
                             <div class="table-row">
                                 <div class="table-cell label">Time</div>
-                                <div class="table-cell value"><%= new Date(app.appointment_time).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short', hour12: false }) %></div>
+                                <div class="table-cell value">
+                                    <%= new Date(app.appointment_time)
+                                        .toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short', hour12: false }) %>
+                                </div>
                             </div>
                             <div class="table-row">
                                 <div class="table-cell label">Specialization</div>
                                 <div class="table-cell value"><%= app.specialization %></div>
                             </div>
                         </div>
-            
                     <% }) %>
-                
                 <% } else { %>
-                    <p class="no-appointments">You have no upcoming appointments.</p>
+                    <p>You have no upcoming appointments.</p>
                 <% } %>
-            </div>
-        
-            <div class="dashboard-panel">
+            </section>
+
+            <!-- Column 2: Doctor Directory -->
+            <section class="dashboard-panel">
                 <h2>Doctor Directory</h2>
-                <div class="doctor-directory-list-sm">
-                    <% if (doctors && doctors.length > 0) { %>
-                        <% doctors.forEach(doctor => { %>
+
+                <% if (doctors && doctors.length > 0) { %>
+                    <div class="doctor-directory-list-sm">
+                        <% doctors.forEach(doc => { %>
                             <div class="doctor-info-card-sm">
                                 <div class="doctor-avatar-sm"></div>
                                 <div class="doctor-card-content">
-                                    <h3><%= doctor.full_name %> (<%= doctor.doctor_id %>)</h3>
-                                    <p><%= doctor.specialization %></p>
+                                    <h3><%= doc.full_name %> (<%= doc.doctor_id %>)</h3>
+                                    <p><%= doc.specialization %></p>
                                 </div>
                             </div>
                         <% }) %>
-                    <% } else { %>
-                        <p>No doctors are currently available.</p>
-                    <% } %>
-                </div>
-            </div>
-        
-            <div class="dashboard-panel">
+                    </div>
+                <% } else { %>
+                    <p>No doctors available.</p>
+                <% } %>
+            </section>
+
+            <!-- Column 3: Booking Form -->
+            <section class="dashboard-panel">
                 <h2>Book a New Appointment</h2>
-                
+
                 <form class="booking-form" action="/book-appointment" method="POST">
                     <div class="form-group">
                         <label for="doctor_id">Doctor ID</label>
-                        <input type="text" id="doctor_id" name="doctor_id" placeholder="e.g., 1" required>
+                        <input type="number" id="doctor_id" name="doctor_id" placeholder="e.g., 1" required>
                     </div>
-        
+
                     <div class="form-group">
                         <label for="appointment_date">Select Date</label>
                         <input type="date" id="appointment_date" name="appointment_date" required>
                     </div>
-        
+
                     <div class="form-group">
                         <label for="appointment_time">Select Time (24-hour format)</label>
-                        <input type="text" id="appointment_time" name="appointment_time" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]" placeholder="HH:MM" required>
+                        <input type="time" id="appointment_time" name="appointment_time" required>
                     </div>
-                    
+
                     <div class="page-actions">
                         <button type="submit" class="continue-btn">Book Now</button>
                     </div>
                 </form>
-            </div>
+            </section>
         </div>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2025 Clinic Appointment Manager. All Rights Reserved.</p>
-        <div class="contact-info">
-            <p>Contact Us: (+91) 1234554321 | info@CAM.com</p>
-        </div>
+        <p>&copy; <%= new Date().getFullYear() %> Clinic Appointment Manager</p>
+        <p class="contact-info">For support, contact your clinic administration.</p>
     </footer>
-
 </body>
 </html>
