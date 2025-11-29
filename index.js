@@ -386,6 +386,6 @@ passport.deserializeUser((user, cb) => {
   cb(null, user);
 });
 
-app.listen(port, () => {
+app.listen(PORT, () => {
   console.log(`Server running on port ${port}`);
 });
