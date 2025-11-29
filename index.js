@@ -38,6 +38,8 @@ const db = new pg.Client({
   database: process.env.SECRET3,
   password: process.env.SECRET4,
   port: process.env.SECRET5,
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
 });
 db.connect();
 
